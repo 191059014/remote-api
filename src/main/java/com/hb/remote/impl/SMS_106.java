@@ -7,6 +7,7 @@ import com.hb.remote.model.out.SMS106OutRes;
 import com.hb.remote.service.ISMS;
 import com.hb.remote.tool.AlarmTools;
 import com.hb.remote.util.HttpUtils;
+import com.hb.unic.base.BaseContext;
 import com.hb.unic.logger.Logger;
 import com.hb.unic.logger.LoggerFactory;
 import com.hb.unic.util.helper.LogHelper;
@@ -14,7 +15,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -38,18 +38,12 @@ public class SMS_106 implements ISMS {
     @Autowired
     public AlarmTools alarmTools;
 
-    @Value("${sms.host}")
-    private String host;
-
-    @Value("${sms.path}")
-    private String path;
-
-    @Value("${sms.appcode}")
-    private String appcode;
-
     @Override
     public SMSSendResult send(String mobile, Integer verifyCode, String smsTemplate, Long expireTime, Object... param) {
         LOGGER.info("SMS_106#send 入参:{}={}={}={}={}", mobile, verifyCode, smsTemplate, expireTime, param);
+        String host = BaseContext.getValue("sms.host");
+        String path = BaseContext.getValue("sms.path");
+        String appcode = BaseContext.getValue("sms.appcode");
         Map<String, String> headers = new HashMap<>();
         headers.put("Authorization", "APPCODE " + appcode);
         /**

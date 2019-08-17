@@ -10,6 +10,7 @@ import com.hb.remote.model.out.IdCardOutRes;
 import com.hb.remote.service.IRealNameAuth;
 import com.hb.remote.tool.AlarmTools;
 import com.hb.remote.util.HttpUtils;
+import com.hb.unic.base.BaseContext;
 import com.hb.unic.logger.Logger;
 import com.hb.unic.logger.LoggerFactory;
 import com.hb.unic.util.helper.LogHelper;
@@ -17,7 +18,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -41,23 +41,12 @@ public class RealNameAuthImpl implements IRealNameAuth {
     @Autowired
     public AlarmTools alarmTools;
 
-    @Value("${idcard.host}")
-    private String idcard_host;
-    @Value("${idcard.path}")
-    private String idcard_path;
-    @Value("${idcard.appcode}")
-    private String idcard_appcode;
-
-    @Value("${bankcard.host}")
-    private String bankcard_host;
-    @Value("${bankcard.path}")
-    private String bankcard_path;
-    @Value("${bankcard.appcode}")
-    private String bankcard_appcode;
-
     @Override
     public BankCardAuthResult bankCardAuth(String accountNo, String idCard, String name) {
         LOGGER.info("RealNameAuthImpl#bankCardAuth 入参:{}={}={}", accountNo, idCard, name);
+        String bankcard_host = BaseContext.getValue("bankcard.host");
+        String bankcard_path = BaseContext.getValue("bankcard.path");
+        String bankcard_appcode = BaseContext.getValue("bankcard.appcode");
         Map<String, String> headers = new HashMap<>();
         headers.put("Authorization", "APPCODE " + bankcard_appcode);
 
@@ -87,6 +76,9 @@ public class RealNameAuthImpl implements IRealNameAuth {
     @Override
     public IdCardAuthResult idCardAuth(String cardNo, String realName) {
         LOGGER.info("RealNameAuthImpl#idCardAuth 入参:{}={}", cardNo, realName);
+        String idcard_host = BaseContext.getValue("idcard.host");
+        String idcard_path = BaseContext.getValue("idcard.path");
+        String idcard_appcode = BaseContext.getValue("idcard.appcode");
         Map<String, String> headers = new HashMap<>();
         headers.put("Authorization", "APPCODE " + idcard_appcode);
 
