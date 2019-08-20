@@ -12,7 +12,7 @@ import org.apache.commons.lang3.StringUtils;
 public enum ExchangeTypeEnum {
 
     shang_hai("sh", "", "上海交易所"),
-    shen_zhen("s_sz", "", "深圳交易所"),
+    shen_zhen("sz", "", "深圳交易所"),
     shang_zhen_zhi_shu("s_sh", "000001", "上证指数"),
     shen_zhen_cheng_zhi("s_sz", "399001", "深圳成指"),
     chuang_ye_ban_zhi("s_sz", "399006", "创业板指");
@@ -46,9 +46,6 @@ public enum ExchangeTypeEnum {
      * @return 封装好的查询参数
      */
     public static String commonRule(String code) {
-        if (code.startsWith("sz")) {
-            return code.replace("sz", shen_zhen.name);
-        }
         return code;
     }
 

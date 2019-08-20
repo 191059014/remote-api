@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * ========== 股票信息 ==========
@@ -119,6 +120,10 @@ public class StockModel implements Serializable {
     // 时间
     @ApiModelProperty(value = "时间")
     private String time;
+
+    // 最后更新时间
+    @ApiModelProperty(value = "最后更新时间")
+    private Date lastTime;
 
     public String getStockCode() {
         return stockCode;
@@ -384,6 +389,14 @@ public class StockModel implements Serializable {
         this.time = time;
     }
 
+    public Date getLastTime() {
+        return lastTime;
+    }
+
+    public void setLastTime(Date lastTime) {
+        this.lastTime = lastTime;
+    }
+
     @Override
     public String toString() {
         return "StockModel{" +
@@ -419,6 +432,7 @@ public class StockModel implements Serializable {
                 ", sellFifthOffer=" + sellFifthOffer +
                 ", date='" + date + '\'' +
                 ", time='" + time + '\'' +
+                ", lastTime='" + lastTime + '\'' +
                 '}';
     }
 
