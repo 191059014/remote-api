@@ -68,7 +68,7 @@ public class AlarmTools {
         sb.append("#").append(apiDesc);
         sb.append("】");
         sb.append(message);
-        sb.append("，请及时处理！");
+        sb.append("，请知晓！");
         sb.append("【traceId:").append(TraceIdUtils.getTraceId()).append("】");
         return sb.toString();
     }
