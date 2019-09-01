@@ -8,6 +8,7 @@ import com.hb.remote.service.IStockService;
 import com.hb.unic.logger.Logger;
 import com.hb.unic.logger.LoggerFactory;
 import com.hb.unic.util.util.HttpUtils;
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +26,17 @@ import java.util.*;
 public class StockServiceImpl implements IStockService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(StockServiceImpl.class);
+
+    @Override
+    public StockModel queryStock(String stockCode) {
+        LOGGER.info("查询单个股票信息入参：{}", stockCode);
+        Set<String> stockCodeSet = new HashSet<>();
+        stockCodeSet.add(stockCode);
+        List<StockModel> stockModels = queryStockList(stockCodeSet);
+        StockModel stockModel = CollectionUtils.isEmpty(stockModels) ? new StockModel() : stockModels.get(0);
+        LOGGER.info("查询单个股票信息入参：{}", stockModel);
+        return stockModel;
+    }
 
     @Override
     public List<StockModel> queryStockList(Set<String> stockCodeSet) {

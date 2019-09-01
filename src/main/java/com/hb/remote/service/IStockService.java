@@ -18,6 +18,14 @@ public interface IStockService {
     /**
      * ###### 根据股票代码查询股票信息 ######
      *
+     * @param stockCode 股票代码
+     * @return 股票信息
+     */
+    StockModel queryStock(String stockCode);
+
+    /**
+     * ###### 根据股票代码集合查询股票信息 ######
+     *
      * @param stockCodeSet 股票代码集合
      * @return 股票信息
      */
