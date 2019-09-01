@@ -123,7 +123,7 @@ public class StockModel implements Serializable {
 
     // 最后更新时间
     @ApiModelProperty(value = "最后更新时间")
-    private Date lastTime;
+    private Date lastUpdateTime;
 
     public String getStockCode() {
         return stockCode;
@@ -389,12 +389,12 @@ public class StockModel implements Serializable {
         this.time = time;
     }
 
-    public Date getLastTime() {
-        return lastTime;
+    public Date getLastUpdateTime() {
+        return lastUpdateTime;
     }
 
-    public void setLastTime(Date lastTime) {
-        this.lastTime = lastTime;
+    public void setLastUpdateTime(Date lastUpdateTime) {
+        this.lastUpdateTime = lastUpdateTime;
     }
 
     @Override
@@ -432,7 +432,7 @@ public class StockModel implements Serializable {
                 ", sellFifthOffer=" + sellFifthOffer +
                 ", date='" + date + '\'' +
                 ", time='" + time + '\'' +
-                ", lastTime='" + lastTime + '\'' +
+                ", lastUpdateTime='" + lastUpdateTime + '\'' +
                 '}';
     }
 
