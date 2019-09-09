@@ -400,6 +400,7 @@ public class StockModel implements Serializable {
     @Override
     public String toString() {
         return "StockModel{" +
+                "stockCode='" + stockCode + '\'' +
                 "stockName='" + stockName + '\'' +
                 ", todayOpeningPrice=" + todayOpeningPrice +
                 ", yesterdayClosePrice=" + yesterdayClosePrice +
