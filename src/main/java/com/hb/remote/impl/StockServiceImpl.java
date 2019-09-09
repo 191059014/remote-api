@@ -34,7 +34,7 @@ public class StockServiceImpl implements IStockService {
         stockCodeSet.add(stockCode);
         List<StockModel> stockModels = queryStockList(stockCodeSet);
         StockModel stockModel = CollectionUtils.isEmpty(stockModels) ? new StockModel() : stockModels.get(0);
-        LOGGER.info("查询单个股票信息入参：{}", stockModel);
+        LOGGER.info("查询单个股票信息出参：{}", stockModel);
         return stockModel;
     }
 
