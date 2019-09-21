@@ -41,6 +41,9 @@ public class StockServiceImpl implements IStockService {
     @Override
     public List<StockModel> queryStockList(Set<String> stockCodeSet) {
         LOGGER.info("查询股票信息入参：{}", stockCodeSet);
+        if (CollectionUtils.isEmpty(stockCodeSet)) {
+            return null;
+        }
         // 拼装请求参数
         String queryParamValue = builderParameter(stockCodeSet, 1);
         if (StringUtils.isBlank(queryParamValue)) {
