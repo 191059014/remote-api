@@ -9,20 +9,23 @@ import org.apache.commons.lang3.StringUtils;
  * @version com.hb.remote.constant.enumutil.SMSResEnum.java, v1.0
  * @date 2019年08月12日 19时37分
  */
-public enum BankCardAuthResEnum {
+public enum BankCardAuthResEnumBak {
 
-    success("0", "验证通过", "验证通过", "验证通过"),
-    error("-1", "异常情况", "异常情况", "异常情况"),
-    fail_1("20502", "银行卡为空或者卡号错误", "银行卡为空或者卡号错误", "银行卡为空或者卡号错误"),
-    fail_2("10016", "姓名为空或者包含特殊字符", "姓名为空或者包含特殊字符", "姓名为空或者包含特殊字符"),
-    fail_3("20010", "身份证号为空或者不符合校验规范", "身份证号为空或者不符合校验规范", "身份证号为空或者不符合校验规范");
+    success("01", "验证通过", "验证通过", "验证通过"),
+    failed("02", "验证不通过", "验证不通过", "验证不通过"),
+    cannot_auth("202", "无法验证", "无法验证", "无法验证"),
+    auth_err("203", "异常情况", "异常情况(同一身份证号重复调用次数达到上限，请12小时后在请求)", "异常情况"),
+    error_name("204", "姓名输入错误", "姓名输入错误", "姓名输入错误"),
+    error_idcard("205", "身份证号输入错误", "身份证号输入错误", "身份证号输入错误"),
+    error_bankcard("206", "银行卡号输入错误", "银行卡号输入错误", "银行卡号输入错误"),
+    error("9999", "系统异常", "系统异常", "系统异常，请稍后再试。");
 
     private String code;
     private String message;
     private String desc;
     private String hint;
 
-    BankCardAuthResEnum(String code, String message, String desc, String hint) {
+    BankCardAuthResEnumBak(String code, String message, String desc, String hint) {
         this.code = code;
         this.message = message;
         this.desc = desc;
@@ -51,11 +54,11 @@ public enum BankCardAuthResEnum {
      * @param code code
      * @return BankCardAuthResEnum
      */
-    public static BankCardAuthResEnum match(String code) {
+    public static BankCardAuthResEnumBak match(String code) {
         if (StringUtils.isBlank(code)) {
             return null;
         }
-        for (BankCardAuthResEnum bankCardAuthResEnum : BankCardAuthResEnum.values()) {
+        for (BankCardAuthResEnumBak bankCardAuthResEnum : BankCardAuthResEnumBak.values()) {
             if (StringUtils.equals(bankCardAuthResEnum.code, code)) {
                 return bankCardAuthResEnum;
             }

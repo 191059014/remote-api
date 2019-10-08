@@ -3,22 +3,27 @@ package com.hb.remote.model.out;
 import java.io.Serializable;
 
 /**
- * ========== 身份证实名认证-验证结果 ==========
+ * ========== Description ==========
  *
  * @author Mr.huang
- * @version com.hb.remote.model.out.IdCardOutResResult.java, v1.0
- * @date 2019年08月12日 23时17分
+ * @version com.hb.remote.model.out.BankCardOutData.java, v1.0
+ * @date 2019年10月08日 18时39分
  */
-public class IdCardOutResResult implements Serializable {
-
-    private static final long serialVersionUID = -1673679606799256580L;
-
-    /*真实姓名*/
+public class BankCardOutData implements Serializable {
+    private static final long serialVersionUID = -3175841222552389123L;
+    private String bankcard;
     private String name;
-    /*身份证号码*/
     private String idcard;
-    private String res;
+    private String result;
     private String description;
+
+    public String getBankcard() {
+        return bankcard;
+    }
+
+    public void setBankcard(String bankcard) {
+        this.bankcard = bankcard;
+    }
 
     public String getName() {
         return name;
@@ -36,12 +41,12 @@ public class IdCardOutResResult implements Serializable {
         this.idcard = idcard;
     }
 
-    public String getRes() {
-        return res;
+    public String getResult() {
+        return result;
     }
 
-    public void setRes(String res) {
-        this.res = res;
+    public void setResult(String result) {
+        this.result = result;
     }
 
     public String getDescription() {
@@ -54,10 +59,11 @@ public class IdCardOutResResult implements Serializable {
 
     @Override
     public String toString() {
-        return "IdCardOutResResult{" +
-                "name='" + name + '\'' +
+        return "BankCardOutData{" +
+                "bankcard='" + bankcard + '\'' +
+                ", name='" + name + '\'' +
                 ", idcard='" + idcard + '\'' +
-                ", res='" + res + '\'' +
+                ", result='" + result + '\'' +
                 ", description='" + description + '\'' +
                 '}';
     }

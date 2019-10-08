@@ -8,13 +8,19 @@ sms:
   appcode: c2b9cd33f35e4710920a5d425f3651c9
 # 身份证实名认证
 idcard:
-  host: http://aliyunverifyidcard.haoservice.com
-  path: /idcard/VerifyIdcardv2
+#  host: http://aliyunverifyidcard.haoservice.com
+#  path: /idcard/VerifyIdcardv2
+#  appcode: c2b9cd33f35e4710920a5d425f3651c9
+  host: https://eid.shumaidata.com
+  path: /eid/check
   appcode: c2b9cd33f35e4710920a5d425f3651c9
 # 银行卡实名认证
 bankcard:
-  host: https://tbank.market.alicloudapi.com
-  path: /bankCheck
+#  host: https://tbank.market.alicloudapi.com
+#  path: /bankCheck
+#  appcode: c2b9cd33f35e4710920a5d425f3651c9
+  host: https://bkcard3.market.alicloudapi.com
+  path: /bankcard3/check
   appcode: c2b9cd33f35e4710920a5d425f3651c9
 
 

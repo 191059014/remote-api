@@ -36,7 +36,7 @@ public class RealNameAuthImpl implements IRealNameAuth {
     /**
      * 日志
      */
-    private static final Logger LOGGER = LoggerFactory.getLogger(SMS_106.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(RealNameAuthImpl.class);
 
     @Autowired
     public AlarmTools alarmTools;
@@ -51,8 +51,8 @@ public class RealNameAuthImpl implements IRealNameAuth {
         headers.put("Authorization", "APPCODE " + bankcard_appcode);
 
         Map<String, String> querys = new HashMap<>();
-        querys.put("accountNo", accountNo);
-        querys.put("idCard", idCard);
+        querys.put("bankcard", accountNo);
+        querys.put("idcard", idCard);
         querys.put("name", name);
         try {
             /**
@@ -62,8 +62,11 @@ public class RealNameAuthImpl implements IRealNameAuth {
             String bodyString = EntityUtils.toString(response.getEntity());
             LOGGER.info("RealNameAuthImpl#bankCardAuth result:{}", bodyString);
             BankCardOutRes res = JSON.parseObject(bodyString, BankCardOutRes.class);
-            if (!StringUtils.equals(BankCardAuthResEnum.success.getCode(), res.getStatus())) {
-                return new BankCardAuthResult(BankCardAuthResEnum.match(res.getStatus()), res);
+            if (!StringUtils.equals(BankCardAuthResEnum.success.getCode(), res.getCode())) {
+                return new BankCardAuthResult(BankCardAuthResEnum.match(res.getCode()), res);
+            }
+            if (res.getData() == null || !"1".equals(res.getData().getResult())) {
+                return new BankCardAuthResult(BankCardAuthResEnum.error, res);
             }
             return new BankCardAuthResult(BankCardAuthResEnum.success, res);
         } catch (Exception e) {
@@ -83,20 +86,21 @@ public class RealNameAuthImpl implements IRealNameAuth {
         headers.put("Authorization", "APPCODE " + idcard_appcode);
 
         Map<String, String> querys = new HashMap<>();
-        querys.put("cardNo", cardNo);
-        querys.put("realName", realName);
+        querys.put("idcard", cardNo);
+        querys.put("name", realName);
+        Map<String, String> bodys = new HashMap<String, String>();
         try {
             /**
              * http调用身份证实名认证
              */
-            HttpResponse response = HttpUtils.doGet(idcard_host, idcard_path, "GET", headers, querys);
+            HttpResponse response = HttpUtils.doPost(idcard_host, idcard_path, "POST", headers, querys, bodys);
             String bodyString = EntityUtils.toString(response.getEntity());
             LOGGER.info("RealNameAuthImpl#idCardAuth result:{}", bodyString);
             IdCardOutRes res = JSON.parseObject(bodyString, IdCardOutRes.class);
-            if (!StringUtils.equals(IdCardAuthResEnum.success.getCode(), res.getError_code())) {
-                return new IdCardAuthResult(IdCardAuthResEnum.match(res.getError_code()), res);
+            if (!StringUtils.equals(IdCardAuthResEnum.success.getCode(), res.getCode())) {
+                return new IdCardAuthResult(IdCardAuthResEnum.match(res.getCode()), res);
             }
-            if (res.getResult() == null || !res.getResult().getIsok()) {
+            if (res.getResult() == null || !"1".equals(res.getResult().getRes())) {
                 return new IdCardAuthResult(IdCardAuthResEnum.failed, res);
             }
             return new IdCardAuthResult(IdCardAuthResEnum.success, res);

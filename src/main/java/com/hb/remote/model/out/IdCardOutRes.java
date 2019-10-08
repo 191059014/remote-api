@@ -13,24 +13,24 @@ public class IdCardOutRes implements Serializable {
 
     private static final long serialVersionUID = -7762315339894257201L;
 
-    private String error_code;
-    private String reason;
+    private String code;
+    private String message;
     private IdCardOutResResult result;
 
-    public String getError_code() {
-        return error_code;
+    public String getCode() {
+        return code;
     }
 
-    public void setError_code(String error_code) {
-        this.error_code = error_code;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public String getReason() {
-        return reason;
+    public String getMessage() {
+        return message;
     }
 
-    public void setReason(String reason) {
-        this.reason = reason;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public IdCardOutResResult getResult() {
@@ -44,10 +44,9 @@ public class IdCardOutRes implements Serializable {
     @Override
     public String toString() {
         return "IdCardOutRes{" +
-                "error_code='" + error_code + '\'' +
-                ", reason='" + reason + '\'' +
+                "code='" + code + '\'' +
+                ", message='" + message + '\'' +
                 ", result=" + String.valueOf(result) +
                 '}';
     }
-
 }
