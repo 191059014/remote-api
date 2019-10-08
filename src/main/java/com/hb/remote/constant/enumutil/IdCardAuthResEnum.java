@@ -12,7 +12,7 @@ import org.apache.commons.lang3.StringUtils;
 public enum IdCardAuthResEnum {
 
     success("0", "验证通过", "验证通过", "验证通过"),
-    failed("400", "参数错误", "参数错误", "参数错误"),
+    failed("400", "验证失败", "验证失败", "验证失败"),
     not_exist("20010", "身份证号为空或非法", "身份证号为空或非法", "身份证号为空或非法"),
     error("20310", "姓名为空或非法", "姓名为空或非法", "姓名为空或非法");
 
