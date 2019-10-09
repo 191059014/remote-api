@@ -27,6 +27,8 @@ public class AlarmTools {
 
     @Value("${gpweb.unit}")
     private String unit;
+    @Value("${gpweb.agentName}")
+    private String agentName;
 
     /**
      * ########## 告警 ##########
@@ -62,7 +64,7 @@ public class AlarmTools {
     private String buildAlertMessage(String source, String module, String apiDesc, String message) {
         StringBuilder sb = new StringBuilder();
         sb.append("【");
-        sb.append("代理商").append(unit);
+        sb.append(agentName + "_" + unit);
         sb.append("#").append(source);
         sb.append("#").append(module);
         sb.append("#").append(apiDesc);
