@@ -5,7 +5,7 @@ alarm:
 sms:
   host: https://cdcxdxjk.market.alicloudapi.com
   path: /chuangxin/dxjk
-  appcode: c2b9cd33f35e4710920a5d425f3651c9
+  appcode: 0b8428b093f543a8aeaa7b6fa6db634b
 # 身份证实名认证
 idcard:
 #  host: http://aliyunverifyidcard.haoservice.com
@@ -13,7 +13,7 @@ idcard:
 #  appcode: c2b9cd33f35e4710920a5d425f3651c9
   host: https://eid.shumaidata.com
   path: /eid/check
-  appcode: c2b9cd33f35e4710920a5d425f3651c9
+  appcode: 0b8428b093f543a8aeaa7b6fa6db634b
 # 银行卡实名认证
 bankcard:
 #  host: https://tbank.market.alicloudapi.com
@@ -21,6 +21,6 @@ bankcard:
 #  appcode: c2b9cd33f35e4710920a5d425f3651c9
   host: https://bkcard3.market.alicloudapi.com
   path: /bankcard3/check
-  appcode: c2b9cd33f35e4710920a5d425f3651c9
+  appcode: 0b8428b093f543a8aeaa7b6fa6db634b
 
 
